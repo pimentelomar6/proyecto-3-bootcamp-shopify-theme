@@ -1,0 +1,119 @@
+<!--Testimonials-->
+<section class="testimonials">
+  
+      <img class="bg-testimonials" src="{{section.settings.testimonials_bg | img_url: 'master' }}" alt="">
+
+    <div class="rectangulo"></div>
+  
+    <div class="container">
+      <div class="texto">
+        <div class="title">
+          <div class="section-title-white">
+            <p class="title-primary">{{section.settings.testimonials_title}}</p>
+            <p class="title-secondary">{{section.settings.testimonials_sub_title}}</p>
+          </div>
+  
+          <div class="button-green-container">
+            <a href="{{section.settings.testimonials_link_button}}" target="_blank"><button class="button button-green">{{section.settings.testimonials_txt_btn}}</button></a>
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="carrusel">
+        <div class="contenedor owl-carousel" id="owl3">
+  
+            {% assign count = 0 %}
+              {% assign count1 = 0 %}
+            {% for item in section.blocks %}
+            
+           
+                {% assign opcion = item.settings.review_type %}
+                {% if item.type ==  'review_texto' %}
+              
+                <div class="carta">
+                  <div class="img-container-review">
+                    
+                      <img class="img-fluid" src="{{item.settings.testimonials_img | img_url: 'master' }}" alt="">
+                   
+                  </div>
+  
+                  <div class="text">
+                    <div class="title mb-4">
+                      <p>{{item.settings.testimonials_review}}</p>
+                    </div>
+                    <p>{{item.settings.testimonials_name}}</p>
+                  </div>
+                </div>
+                {% endif %}
+  
+                {% if item.type ==  'review_video' %}
+                
+                <div class="carta">
+                  <div class="img-container-review">
+              
+                      <img class="img-fluid image-video" src="{{item.settings.testimonials_img | img_url: 'master' }}" alt="">
+                  
+                    <div class="icon_play_video">
+                        {% assign modal_link = item.settings.testimonials_link.id %}
+                        {% assign modal_links[count1] =  modal_link %}
+                     
+                      <a data-toggle="modal" data-target="#video-modal-{{count1}}">
+                        <i class="fa-solid fa-play"></i>
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="text">
+                    <div class="title mb-4">
+                      <p>{{item.settings.testimonials_review}}</p>
+                    </div>
+                    <p>{{item.settings.testimonials_name}}</p>
+                  </div>
+                </div>
+  
+                 {% assign count1 = count1 | plus: 1 %}
+                {% endif %}
+             
+              {% assign count = count | plus: 1 %}
+          
+            {% endfor %}
+         
+  
+        </div>
+      </div>
+  
+      <!--Modal-->
+      
+      {% assign count = 0 %}
+      {% for item in section.blocks %}
+      {% if item.type ==  'review_video' %}
+          
+          
+  
+       
+            <div class="modal fade" id="video-modal-{{count}}" tabindex="-1" role="dialog" aria-labelledby="video-modal-{{count}}-label" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="video-modal-{{count}}-label">Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <iframe class="frame" id="video-iframe-{{count}}" width="100%" height="415" src="https://www.youtube.com/embed/{{ item.settings.testimonials_link.id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            
+        
+    
+          {% assign count = count | plus: 1 %}
+        {% endif %}
+        {% endfor %}
+  
+  </section>

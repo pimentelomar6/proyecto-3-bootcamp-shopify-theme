@@ -1,0 +1,73 @@
+<style type="text/css">
+  .template-404 .title + * {
+    margin-top: 1rem;
+  }
+
+
+
+  .button{
+    width: auto;
+    padding: 10px;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .template-404 .title + * {
+      margin-top: 2rem;
+    }
+  }
+</style>
+{% include 'hero' %}
+<div class="container">
+<div class="template-404 page-width page-margin center">
+  <h1 class="title">
+    {{ 'templates.404.title' | t }}
+  </h1>
+  <a href="{{ routes.all_products_collection_url }}" class="button">
+    {{ 'general.continue_shopping' | t }}
+  </a>
+</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Page 404",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "imagen_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        {
+          "value": "imagen",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title"
+    },
+    {
+      "type": "url",
+      "id": "home_breadcrumb",
+      "label": "URL"
+    }
+  ]
+  }
+{% endschema %}

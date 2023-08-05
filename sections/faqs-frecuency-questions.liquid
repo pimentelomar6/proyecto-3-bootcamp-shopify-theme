@@ -1,0 +1,166 @@
+  <section class="frecuency-questions">
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12" data-aos="fade-up">
+        <div class="section-title-white">
+          <h3 class="title-primary">{{ section.settings.section1_tittle }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="acordion-image">
+      <div class="col-12 col-md-6 col-lg-6" data-aos="fade-up">
+        <div class="questions">
+          <div class="accordion" id="accordionExample">
+            {% assign count = 0 %} {% if section.blocks %} {% for item in
+            section.blocks %} {% if count == 0 %}
+
+            <div class="card">
+              <div class="card-header active" id="heading{{ count }}">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block btn-acordion"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse{{ count }}"
+                    aria-expanded="true"
+                    aria-controls="collapse{{ count }}"
+                  >
+                    {{ item.settings.question }}
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="collapse{{ count }}"
+                class="collapse show"
+                aria-labelledby="heading{{ count }}"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body">
+                  {{ item.settings.answer }}
+                </div>
+              </div>
+            </div>
+            {% endif %} {% if count != 0 %}
+
+            <div class="card">
+              <div class="card-header" id="heading{{ count }}">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block btn-acordion"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse{{ count }}"
+                    aria-expanded="true"
+                    aria-controls="collapse{{ count }}"
+                  >
+                    {{ item.settings.question }}
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="collapse{{ count }}"
+                class="collapse"
+                aria-labelledby="heading{{ count }}"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body">
+                  {{ item.settings.answer }}
+                </div>
+              </div>
+            </div>
+            {% endif %} {% assign count = count | plus: 1 %} {% endfor %} {%
+            else %} {% comment %} no rows found {% endcomment %} {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center" id="fqs-button-none">
+        <a href="{{ section.settings.fqs_btn_link }}"
+          ><button class="button button-hero mt-4" data-aos="fade-up">
+            {{ section.settings.section1_btn_txt }}
+          </button></a
+        >
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6" data-aos="fade-up">
+        <div class="imagen">
+          <img
+            class="img-fluid"
+            src="{{ section.settings.section1_img | img_url: 'master' }}"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="row-button-fqs">
+      <div class="col-12 text-center">
+     
+
+        <a href="{{ section.settings.fqs_btn_link }}"
+          ><button class="button button-hero mt-4" data-aos="fade-up">
+            {{ section.settings.section1_btn_txt }}
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Section F Questions",
+    "settings": [
+      {
+    "type": "text",
+    "id": "section1_tittle",
+    "label": "Section 1 Title"
+    
+   },
+   {
+    "type": "text",
+    "id": "section1_btn_txt",
+    "label": "Section 1 Button Text"
+    
+  },
+  {
+    "type": "image_picker",
+    "id": "section1_img",
+    "label": "Image Section 1"
+   },
+  {
+    "type": "url",
+    "id": "fqs_btn_link",
+    "label": "Link Button"
+  }
+    ],
+    "blocks":[
+        {
+     "type": "acordion_item",
+     "name": "Acordion Item",
+      "settings": [
+       {
+        "type": "textarea",
+        "id": "question",
+        "label": "Question"
+       },
+
+      {
+        "type": "textarea",
+        "id": "answer",
+        "label": "Answer"
+      }
+      ]
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

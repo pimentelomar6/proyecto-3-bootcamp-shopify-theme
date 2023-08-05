@@ -1,0 +1,146 @@
+  <!--Best Sellers-->
+<section class="best-sellers" id="best-sellers">
+
+    {% assign image-bs = section.settings.image-bs %}
+    {% if image-bs %}
+   
+   
+      <img class="bg-bestsellers" src="{{ image-bs | img_url: 'master' }}" alt="" />
+      {% endif %}
+    <div class="container">
+  
+      <div class="section-title-white" data-aos="zoom-in">
+        <p class="title-primary"> {{section.settings.title}}</p>
+        <p class="title-secondary">{{section.settings.sub_title}}</p>
+      </div>
+      <!--Carrusel-->
+      <div class="carrusel">
+        <div class=" owl-carousel" id="owl1">
+        {% assign count = 0 %}
+        
+     
+            {% for item in section.blocks %}
+            {% if item.type == "bs_item" %}
+            {% assign countResult = count | modulo: 2  %}
+            {% if countResult != 0 %}
+
+          {% assign current_product = item.settings.product.selected_or_first_available_variant  %}
+        
+              
+                <div class="card ">
+                  <div class="principal">
+                    <a href="{{ item.settings.product.url }}">
+                      <img class="img-bs" src="{{ item.settings.product.featured_image | image_url }}" alt="" srcset="" />
+                    </a>
+                      <a data-ajax-cart-request-button href="/cart/add?id={{ current_product.id }}&quantity=1">
+                    <button class="card-icon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                      </a>
+                    <div class="card-price">
+                      <p>{{item.settings.product.price | money_without_trailing_zeros }}</p>
+                    </div>
+                  </div>
+  
+                  <div class="location">
+                    <p>{{item.settings.product.title}}</p>
+                  </div>
+                </div>
+                {% endif %}
+             
+                {% if countResult == 0 %}
+
+                      {% assign current_product = item.settings.product.selected_or_first_available_variant  %}
+                <div class="card up">
+                  <div class="principal">
+                    <a href="{{ item.settings.product.url }}">
+                      <img class="img-bs" src="{{ item.settings.product.featured_image | image_url }}" alt="" srcset="" />
+                    </a>
+                      <a data-ajax-cart-request-button href="/cart/add?id={{ current_product.id }}&quantity=1">
+                    <button class="card-icon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    </a>
+                    <div class="card-price">
+                      <p>{{item.settings.product.price |  money_without_trailing_zeros }}</p>
+                    </div>
+                  </div>
+  
+                  <div class="location">
+                    <p>{{item.settings.product.title}}</p>
+                  </div>
+                </div>
+              {% endif %}
+              {% assign count = count | plus: 1 %}
+               {% endif %}
+             {% endfor %}
+             
+       
+        </div>
+      </div>
+  
+      <div class="bestseller-button">
+        
+          <a href="{{section.settings.bs_link_btn}}" data-aos="fade-right">
+            <button class="button ">
+              {{section.settings.best_seller_txt_btn}}
+            </button>
+          </a>
+
+      </div>
+    </div>
+  </section>
+
+{% schema %}
+  {
+    "name": "Best Sellers",
+    "settings": [
+       {
+    "type": "image_picker",
+    "id": "image-bs",
+    "label": "Best Seller Image Background"
+},
+{
+    "type": "text",
+    "id": "title",
+    "label": "Best Seller Title"
+},
+
+{
+    "type": "text",
+    "id": "sub_title",
+    "label": "Best Seller Sub-Title"
+},
+{
+    "type": "url",
+    "id": "bs_link_btn",
+    "label": "Best Seller Link Button"
+},
+{
+    "type": "text",
+    "id": "best_seller_txt_btn",
+    "label": "Best Seller Text Button"
+}
+    ],
+    "blocks": [
+      {
+   "type": "bs_item",
+  "name": "Best Seller Item Card",
+ "settings": [
+   {
+  "type": "product",
+  "id": "product",
+  "label": "Product"
+}
+   
+ ]
+  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

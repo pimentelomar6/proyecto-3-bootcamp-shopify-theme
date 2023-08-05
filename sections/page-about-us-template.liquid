@@ -1,0 +1,280 @@
+ <!--Hero-->
+    
+    {% include 'hero' %}
+   <!--History-->
+<section class="history">
+  <img class="bg-history" src="{{ section.settings.section1_bg | img_url: 'master'  }}" alt="" />
+
+  <div class="history-content container">
+    <div class="row">
+      <div class="text col-12 col-md-6 col-lg-6 col-xl-6" data-aos="fade-right">
+        <div class="section-title-white">
+          <h3 class="title-primary">{{ section.settings.section1_title }}</h3>
+        </div>
+
+        <p class="mt-3 mb-4">
+          {{ section.settings.section1_desc }}
+        </p>
+      </div>
+
+      <div class="image-history col-md-6 col-lg-6 col-xl-6" data-aos="fade-left">
+        <img class="img-fluid" src="{{ section.settings.section1_image | img_url: 'master' }}" alt="" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="description-button mt-3">
+          <div class="button-green-container">
+            {% assign btn_link = section.settings.btn_link %}
+            {% if btn_link %}
+              {% assign url_history = section.url | append: btn_link %}
+              <a href="{{ url_history }}"><button class="button button-green">{{ section.settings.section1_btn_txt }}</button></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!--Mision-->
+<section class="mision">
+  <img src="{{ section.settings.section2_bg | img_url: 'master' }}" alt="" srcset="" />
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.mision_title }}</h6>
+          <p class="">
+            {{ section.settings.mision_desc }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.vision_title }}</h6>
+          <p class="">
+            {{ section.settings.vision_desc }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.values_title }}</h6>
+          <p class="">
+            {{ section.settings.values_desc }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Our Team--->
+<section id="our-team-2">
+  <div class="capa-ourteam"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title-white mt-5 mb-5">
+          <h3 class="title-primary">{{ section.settings.section_3_title }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 cartas">
+      <div class="cartas-contenedor owl-carousel" id="owl-about">
+
+     
+          {% for item in section.blocks %}
+            <div class="card">
+              <div class="team-image-wrapper">
+                {% if item.settings.image %}
+                  <img class="team-member-image" src="{{ item.settings.image | img_url: 'master' }}" />
+                {% endif %}
+              </div>
+              <p class="text-blk name">{{ item.settings.name }}</p>
+              <p class="text-blk position">{{ item.settings.position }}</p>
+              <p class="text-blk feature-text">
+                {{ item.settings.description }}
+              </p>
+            </div>
+          {% endfor %}
+      
+     
+      
+      </div>
+    </div>
+
+    <div class="col-12 text-center">
+      {% if section.settings.btn_link_section_3 %}
+        {% assign url_ot = section.url | append: section.settings.btn_link_section_3 %}
+        <a href="{{ url_ot }}"><button class="button button-green">{{ section.settings.section3_btn_txt }}</button></a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+ {
+  "name": "About Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "imagen_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        {
+          "value": "imagen",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title"
+    },
+    {
+      "type": "url",
+      "id": "home_breadcrumb",
+      "label": "URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "section1_bg",
+      "label": "Background History Image"   
+    },
+    {
+      "type": "text",
+      "id": "section1_title",
+      "label": "Title"
+      
+    },
+    {
+      "type": "textarea",
+      "id": "section1_desc",
+      "label": "Description"
+    
+    },
+    {
+      "type": "image_picker",
+      "id": "section1_image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "section1_btn_txt",
+      "label": "Button Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "section2_bg",
+      "label": "Background Image Section 2"
+    },
+    {
+      "type": "text",
+      "id": "mision_title",
+      "label": "Mission Title"
+    },
+    {
+      "type": "textarea",
+      "id": "mision_desc",
+      "label": "Mission Description"
+    },
+    {
+      "type": "text",
+      "id": "vision_title",
+      "label": "Vision Title"
+    },
+    {
+      "type": "textarea",
+      "id": "vision_desc",
+      "label": "Vision Description"
+    },
+    {
+      "type": "text",
+      "id": "values_title",
+      "label": "Values Title"
+    },
+    {
+      "type": "textarea",
+      "id": "values_desc",
+      "label": "Values Description"
+    },
+    {
+      "type": "text",
+      "id": "section_3_title",
+      "label": "Section 3 Title"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_section_3",
+      "label": "Button Link Section 3"
+    },
+    {
+      "type": "text",
+      "id": "section3_btn_txt",
+      "label": "Button Text Section 3"
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Name",
+          "id": "name"
+        },
+        {
+          "type": "text",
+          "label": "Position",
+          "id": "position"
+        },
+        {
+          "type": "textarea",
+          "label": "Description",
+          "id": "description"
+        }
+      ]
+    }
+  ]
+}
+  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

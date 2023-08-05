@@ -1,0 +1,377 @@
+<script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+
+
+
+
+<!--Nav top-->
+<ul class="navbar-nav  navbar-black" id="bar-icons" >
+    <li class="nav-item">
+      <a class="nav-link" href="mailto:{{ section.settings.mail }}"
+        ><i class="fa-solid fa-envelope"></i
+      ></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ section.settings.location_url }}" target="_blank"
+        ><i class="fa-solid fa-location-dot"></i
+      ></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="tel:{{ section.settings.phone }}"
+        ><i class="fa-solid fa-phone"></i
+      ></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="fa-solid fa-magnifying-glass"></i
+      ></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#"
+        ><i class="fa-solid fa-cart-shopping"></i
+      ></a>
+    </li>
+  </ul>
+
+
+  <!--Navbar-->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light nav-principal" >
+    <a class="navbar-brand" href="/">
+      <img class="logo" src="{{section.settings.image-logo | img_url: 'master' }}"  alt="" />
+    </a>
+
+      <div class="content-mobile">
+       <ul class="" id="contact-icons-5" data-ajax-cart-section>
+          <li class="nav-item">
+            {% render 'header-search', input_id: 'Search-In-Modal' %}
+           
+          </li>
+          <li class="nav-item" >
+            
+            <a href="{{ routes.cart_url }}" class="nav-link header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+      {%- liquid
+        if cart == empty
+          render 'icon-cart-empty'
+        else
+          render 'icon-cart'
+        endif
+      -%}
+      <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+      {%- if cart != empty -%}
+        <div  class="cart-count-bubble"  >
+          {%- if cart.item_count < 100 -%}
+            <span aria-hidden="true"  >{{ cart.item_count }}</span>
+          {%- endif -%}
+          <span class="visually-hidden" >{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+        </div>
+      {%- endif -%}
+    </a>
+          </li>
+        </ul>
+
+
+      
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+   </div>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+      
+        
+        {% for link in section.settings.menu.links %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+         {% endfor %}
+       
+
+        <ul class="navbar-nav" id="contact-icons">
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:{{ section.settings.mail }}"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ section.settings.location_url }}" target="_blank"
+              ><i class="fa-solid fa-location-dot"></i
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tel:{{ section.settings.phone }}"
+              ><i class="fa-solid fa-phone"></i
+            ></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav" id="contact-icons-2" data-ajax-cart-section>
+          <li class="nav-item">
+            {% render 'header-search', input_id: 'Search-In-Modal' %}
+           
+          </li>
+          <li class="nav-item" >
+            
+            <a href="{{ routes.cart_url }}" class="nav-link header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+      {%- liquid
+        if cart == empty
+          render 'icon-cart-empty'
+        else
+          render 'icon-cart'
+        endif
+      -%}
+      <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+      {%- if cart != empty -%}
+        <div  class="cart-count-bubble"  >
+          {%- if cart.item_count < 100 -%}
+            <span aria-hidden="true"  >{{ cart.item_count }}</span>
+          {%- endif -%}
+          <span class="visually-hidden" >{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+        </div>
+      {%- endif -%}
+    </a>
+          </li>
+        </ul>
+
+        
+
+       
+
+      </ul>
+    </div>
+  </nav>
+
+  <!--Tooltip-->
+  <div class="fbutton" id="floating-button">
+    <span><i class="fa-solid fa-info"></i></span>
+    <div id="floating-menu">
+      <a href="mailto:{{ section.settings.mail }}"><i class="fa-solid fa-envelope"></i></a>
+      <a href="{{ section.settings.location_url }}" target="_blank"><i class="fa-solid fa-location-dot"></i></a>
+      <a href="tel:{{ section.settings.phone }}"><i class="fa-solid fa-phone"></i></a>
+    </div>
+  </div>
+
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+     {
+      "type": "image_picker",
+      "id": "image-logo",
+      "label": "Image"
+     },
+    {
+  "type": "text",
+  "id": "mail",
+  "label": "Mail"
+},
+    {
+    "type": "link_list",
+    "id": "menu",
+    "default": "main-menu",
+    "label": "t:sections.header.settings.menu.label"
+  },
+    {
+  "type": "text",
+  "id": "phone",
+  "label": "Phone"
+},
+    {
+  "type": "url",
+  "id": "location_url",
+  "label": "Location URL"
+},
+ {
+  "type": "url",
+  "id": "cart_url",
+  "label": "Cart URL"
+}
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+  
+}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+class StickyHeader extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.header = document.querySelector('.section-header');
+    this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
+    this.headerBounds = {};
+
+    this.setHeaderHeight();
+
+    window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
+
+    if (this.headerIsAlwaysSticky) {
+      this.header.classList.add('shopify-section-header-sticky');
+    };
+
+    this.currentScrollTop = 0;
+    this.preventReveal = false;
+    this.predictiveSearch = this.querySelector('predictive-search');
+
+    this.onScrollHandler = this.onScroll.bind(this);
+    this.hideHeaderOnScrollUp = () => this.preventReveal = true;
+
+    this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+    window.addEventListener('scroll', this.onScrollHandler, false);
+
+    this.createObserver();
+  }
+
+  setHeaderHeight() {
+    document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+    window.removeEventListener('scroll', this.onScrollHandler);
+  }
+
+  createObserver() {
+    let observer = new IntersectionObserver((entries, observer) => {
+      this.headerBounds = entries[0].intersectionRect;
+      observer.disconnect();
+    });
+
+    observer.observe(this.header);
+  }
+
+  onScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+
+    if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      this.header.classList.add('scrolled-past-header');
+      if (this.preventHide) return;
+      requestAnimationFrame(this.hide.bind(this));
+    } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      this.header.classList.add('scrolled-past-header');
+      if (!this.preventReveal) {
+        requestAnimationFrame(this.reveal.bind(this));
+      } else {
+        window.clearTimeout(this.isScrolling);
+
+        this.isScrolling = setTimeout(() => {
+          this.preventReveal = false;
+        }, 66);
+
+        requestAnimationFrame(this.hide.bind(this));
+      }
+    } else if (scrollTop <= this.headerBounds.top) {
+      this.header.classList.remove('scrolled-past-header');
+      requestAnimationFrame(this.reset.bind(this));
+    }
+
+    this.currentScrollTop = scrollTop;
+  }
+
+  hide() {
+    if (this.headerIsAlwaysSticky) return;
+    this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+    this.closeMenuDisclosure();
+    this.closeSearchModal();
+  }
+
+  reveal() {
+    if (this.headerIsAlwaysSticky) return;
+    this.header.classList.add('shopify-section-header-sticky', 'animate');
+    this.header.classList.remove('shopify-section-header-hidden');
+  }
+
+  reset() {
+    if (this.headerIsAlwaysSticky) return;
+    this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+  }
+
+  closeMenuDisclosure() {
+    this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
+    this.disclosures.forEach(disclosure => disclosure.close());
+  }
+
+  closeSearchModal() {
+    this.searchModal = this.searchModal || this.header.querySelector('details-modal');
+    this.searchModal.close(false);
+  }
+}
+
+customElements.define('sticky-header', StickyHeader);
+
+class DetailsModal extends HTMLElement {
+constructor() {
+  super();
+  this.detailsContainer = this.querySelector('details');
+  this.summaryToggle = this.querySelector('summary');
+
+  this.detailsContainer.addEventListener('keyup', (event) => event.code.toUpperCase() === 'ESCAPE' && this.close());
+  this.summaryToggle.addEventListener('click', this.onSummaryClick.bind(this));
+  this.querySelector('button[type="button"]').addEventListener('click', this.close.bind(this));
+
+  this.summaryToggle.setAttribute('role', 'button');
+}
+
+isOpen() {
+  return this.detailsContainer.hasAttribute('open');
+}
+
+onSummaryClick(event) {
+  event.preventDefault();
+  event.target.closest('details').hasAttribute('open') ? this.close() : this.open(event);
+}
+
+onBodyClick(event) {
+  if (!this.contains(event.target) || event.target.classList.contains('modal-overlay')) this.close(false);
+}
+
+open(event) {
+  this.onBodyClickEvent = this.onBodyClickEvent || this.onBodyClick.bind(this);
+  event.target.closest('details').setAttribute('open', true);
+  document.body.addEventListener('click', this.onBodyClickEvent);
+  document.body.classList.add('overflow-hidden');
+
+  trapFocus(
+    this.detailsContainer.querySelector('[tabindex="-1"]'),
+    this.detailsContainer.querySelector('input:not([type="hidden"])')
+  );
+}
+
+close(focusToggle = true) {
+  removeTrapFocus(focusToggle ? this.summaryToggle : null);
+  this.detailsContainer.removeAttribute('open');
+  document.body.removeEventListener('click', this.onBodyClickEvent);
+  document.body.classList.remove('overflow-hidden');
+}
+}
+
+customElements.define('details-modal', DetailsModal);
+
+
+
+
+{% endjavascript %}

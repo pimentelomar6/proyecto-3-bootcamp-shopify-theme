@@ -1,0 +1,164 @@
+<!--Package-->
+<section class="package" id="package">
+   
+      <img class="pk-bg" src="{{ section.settings.package_bg | img_url: 'master' }}" alt="" srcset="" />
+
+  
+  
+    <div class="container">
+      <div class="section-title-white">
+        <p class="title-primary">{{section.settings.package_title}}</p>
+        <p class="title-secondary">{{section.settings.package_sub_title}}</p>
+      </div>
+    
+      {% assign count = 0 %}
+      {% for item in section.blocks %}
+        {% if item.type == 'pk_cards'  %}
+        {% assign countResult = count | modulo: 3  %}
+      {% if countResult == 0 %}
+
+      
+            <div class="row">
+            
+            {% endif %}
+  
+            <div class="card col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="location">
+                <p>{{item.settings.location}}</p>
+              </div>
+  
+              <div class="category-contain">
+                <a href="{{item.settings.card_link}}?section={{ item.settings.id }}">
+                  
+                    <img src="{{item.settings.image | img_url: 'master' }} " alt="" srcset="" />
+                 
+                  <div class="card-icon">
+                    <p class="c-1">
+                      3D <br />
+                      2N
+                    </p>
+                  </div>
+                  <div class="card-price">{{item.settings.text}}</div>
+                </a>
+              </div>
+            </div>
+            {% assign count = count | plus: 1 %}
+             {% assign countResult = count | modulo: 3  %}
+            {% if countResult == 0 %}
+           
+            </div>
+          
+          {% endif %}
+
+
+
+          
+          {% endif %} 
+
+      
+        {% endfor %}
+  
+        {% if countResult != 0 %}
+    </div>
+    {% endif %}
+ 
+  
+ 
+  
+  <div class="row">
+    <div class="button-contain col-12 col-md-12 col-lg-12 col-xl-12" data-aos="fade-left">
+      
+        <a href="{{section.settings.pk_link_btn}}">
+          <button class="button button-secondary">
+            {{section.settings.pk_txt_btn}}
+          </button>
+        </a>
+     
+    </div>
+  </div>
+  </div>
+  
+  <div class="about-text">
+    <p>adventure</p>
+  </div>
+  </div>
+  </section>
+  
+
+
+
+{% schema %}
+  {
+    "name": "Package",
+    "settings": [
+       {
+    "type": "image_picker",
+    "id": "package_bg",
+    "label": "Package Background"
+},
+{
+    "type": "text",
+    "id": "package_title",
+    "label": "Package Title"
+},
+
+{
+    "type": "text",
+    "id": "package_sub_title",
+    "label": "Package Sub Title"
+},
+{
+    "type": "url",
+    "id": "pk_link_btn",
+    "label": "Package Link Button"
+},
+
+{
+    "type": "text",
+    "id": "pk_txt_btn",
+    "label": "Package Text Button"
+}
+    ],
+    "blocks": [
+       {
+   "type": "pk_cards",
+  "name": "Package Cards",
+ "settings": [
+   {
+    "type": "text",
+    "id": "id",
+    "label": "Section ID"
+   },
+   {
+    "type": "text",
+    "id": "location",
+    "label": "Location"
+   },
+ {
+    "type": "url",
+    "id": "card_link",
+    "label": "Card Link"
+ },
+{
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+},
+{
+    "type": "text",
+    "id": "text",
+    "label": "Text"
+}
+     
+  ]
+  }
+    ]
+    
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

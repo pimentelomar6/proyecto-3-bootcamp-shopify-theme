@@ -1,0 +1,102 @@
+<!--Our Team--->
+<section id="our-team-2">
+  <div class="capa-ourteam"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title-white mt-5 mb-5">
+          <h3 class="title-primary">{{ section.settings.section_3_title }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 cartas">
+      <div class="cartas-contenedor owl-carousel" id="owl-about">
+
+     
+          {% for item in section.blocks %}
+            <div class="card">
+              <div class="team-image-wrapper">
+                {% if item.settings.image %}
+                  <img class="team-member-image" src="{{ item.settings.image | img_url: 'master' }}" />
+                {% endif %}
+              </div>
+              <p class="text-blk name">{{ item.settings.name }}</p>
+              <p class="text-blk position">{{ item.settings.position }}</p>
+              <p class="text-blk feature-text">
+                {{ item.settings.description }}
+              </p>
+            </div>
+          {% endfor %}
+      
+     
+      
+      </div>
+    </div>
+
+    <div class="col-12 text-center">
+      {% if section.settings.btn_link_section_3 %}
+        {% assign url_ot = section.url | append: section.settings.btn_link_section_3 %}
+        <a href="{{ url_ot }}"><button class="button button-green">{{ section.settings.section3_btn_txt }}</button></a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Our Team Section",
+    "settings": [
+      {
+      "type": "text",
+      "id": "section_3_title",
+      "label": "Section 3 Title"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_section_3",
+      "label": "Button Link Section 3"
+    },
+    {
+      "type": "text",
+      "id": "section3_btn_txt",
+      "label": "Button Text Section 3"
+    }
+    ],
+    "blocks":[
+      {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Name",
+          "id": "name"
+        },
+        {
+          "type": "text",
+          "label": "Position",
+          "id": "position"
+        },
+        {
+          "type": "textarea",
+          "label": "Description",
+          "id": "description"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

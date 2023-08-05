@@ -1,0 +1,566 @@
+
+
+  <!--Best Sellers-->
+<section class="best-sellers" id="best-sellers">
+
+    {% assign image-bs = section.settings.image-bs %}
+    {% if image-bs %}
+   
+   
+      <img class="bg-bestsellers" src="{{ image-bs | img_url: 'master' }}" alt="" />
+      {% endif %}
+    <div class="container">
+  
+      <div class="section-title-white" data-aos="zoom-in">
+        <p class="title-primary"> {{section.settings.title}}</p>
+        <p class="title-secondary">{{section.settings.sub_title}}</p>
+      </div>
+      <!--Carrusel-->
+      <div class="carrusel">
+        <div class=" owl-carousel" id="owl1">
+        {% assign count = 0 %}
+        
+     
+            {% for item in section.blocks %}
+            {% if item.type == "bs_item" %}
+            {% assign countResult = count | modulo: 2  %}
+            {% if countResult != 0 %}
+            
+                <div class="card ">
+                  <div class="principal">
+                    <a href="{{ item.settings.product_url }}">
+                      <img class="img-bs" src="{{ item.settings.card_image | image_url }}" alt="" srcset="" />
+                    </a>
+                      <a data-ajax-cart-request-button href="{{ item.settings.add-cart }}">
+                    <button class="card-icon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                      </a>
+                    <div class="card-price">
+                      <p>{{item.settings.card-price}}</p>
+                    </div>
+                  </div>
+  
+                  <div class="location">
+                    <p>{{item.settings.card-location}}</p>
+                  </div>
+                </div>
+                {% endif %}
+             
+                {% if countResult == 0 %}
+       
+                <div class="card up">
+                  <div class="principal">
+                    <a href="{{ item.settings.product_url }}">
+                      <img class="img-bs" src="{{ item.settings.card_image | image_url }}" alt="" srcset="" />
+                    </a>
+                      <a data-ajax-cart-request-button href="{{ item.settings.add-cart }}">
+                    <button class="card-icon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    </a>
+                    <div class="card-price">
+                      <p>{{item.settings.card-price}}</p>
+                    </div>
+                  </div>
+  
+                  <div class="location">
+                    <p>{{item.settings.card-location}}</p>
+                  </div>
+                </div>
+              {% endif %}
+              {% assign count = count | plus: 1 %}
+               {% endif %}
+             {% endfor %}
+             
+       
+        </div>
+      </div>
+  
+      <div class="bestseller-button">
+        
+          <a href="{{section.settings.bs_link_btn}}" data-aos="fade-right">
+            <button class="button ">
+              {{section.settings.best_seller_txt_btn}}
+            </button>
+          </a>
+
+      </div>
+    </div>
+  </section>
+
+<!--About Us-->
+<section class="about-us" id="about-us">
+
+      <img class="bg-aboutus" src="{{ section.settings.about_bg_img | img_url: 'master' }}" alt="" />
+  
+    <div class="about-text">
+      <p>adventure</p>
+    </div>
+    <div class="container">
+  
+      <div class="about-content container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="about-images-container" data-aos="fade-right">
+             
+                <img src="" alt="" />
+  
+                <img class="image-1" src="{{ section.settings.about_img_center| img_url: 'master' }}" alt="" />
+          
+             
+                <img class="image-2" src="{{ section.settings.about_img_top_left | img_url: 'master' }}" alt="" />
+              
+                <img class="image-3" src="{{ section.settings.about_img_botom_left | img_url: 'master' }}" alt="" />
+              
+                <img class="image-4" src="{{ section.settings.about_img_botom_right | img_url: 'master' }}" alt="" />
+             
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 col-xl-6" data-aos="fade-left">
+            <div class="about-description">
+              <div class="description-contenedor">
+                <div class="section-title-white">
+                  <p class="title-primary">{{section.settings.about_title}}</p>
+                  <p class="title-secondary">{{section.settings.about_sub_title}} </p>
+                </div>
+                <p>
+                  {{section.settings.about_desc}}
+                </p>
+  
+                <div class="description-button">
+                  <div class="button-green-container">
+                   
+                      <a href="{{section.settings.about_link_btn}}"><button class="button button-green">{{section.settings.about_text_btn}}</button></a>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="rectangulo3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!--Package-->
+<section class="package" id="package">
+   
+      <img class="pk-bg" src="{{ section.settings.package_bg | img_url: 'master' }}" alt="" srcset="" />
+
+  
+  
+    <div class="container">
+      <div class="section-title-white">
+        <p class="title-primary">{{section.settings.package_title}}</p>
+        <p class="title-secondary">{{section.settings.package_sub_title}}</p>
+      </div>
+    
+      {% assign count = 0 %}
+      {% for item in section.blocks %}
+        {% if item.type == 'pk_cards'  %}
+        {% assign countResult = count | modulo: 3  %}
+      {% if countResult == 0 %}
+
+      
+            <div class="row">
+            
+            {% endif %}
+  
+            <div class="card col-12 col-md-4 col-lg-4 col-xl-4">
+              <div class="location">
+                <p>{{item.settings.location}}</p>
+              </div>
+  
+              <div class="category-contain">
+                <a href="{{item.settings.card_link}}?section={{ item.settings.id }}">
+                  
+                    <img src="{{item.settings.image | img_url: 'master' }} " alt="" srcset="" />
+                 
+                  <div class="card-icon">
+                    <p class="c-1">
+                      3D <br />
+                      2N
+                    </p>
+                  </div>
+                  <div class="card-price">{{item.settings.text}}</div>
+                </a>
+              </div>
+            </div>
+            {% assign count = count | plus: 1 %}
+             {% assign countResult = count | modulo: 3  %}
+            {% if countResult == 0 %}
+           
+            </div>
+          
+          {% endif %}
+
+
+
+          
+          {% endif %} 
+
+      
+        {% endfor %}
+  
+        {% if countResult != 0 %}
+    </div>
+    {% endif %}
+ 
+  
+ 
+  
+  <div class="row">
+    <div class="button-contain col-12 col-md-12 col-lg-12 col-xl-12" data-aos="fade-left">
+      
+        <a href="{{section.settings.pk_link_btn}}">
+          <button class="button button-secondary">
+            {{section.settings.pk_txt_btn}}
+          </button>
+        </a>
+     
+    </div>
+  </div>
+  </div>
+  
+  <div class="about-text">
+    <p>adventure</p>
+  </div>
+  </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+ {% include 'reviews' %}
+
+
+
+      <!--Suscribe-->
+  <section class="suscribe" id="suscribe" data-aos="zoom-in">
+      
+
+
+    <div class="bg-suscribe">
+      <img class="img-bg-1" src="{{section.settings.suscribe_bg1| img_url: 'master' }}" alt="" />
+      <img class="img-bg-2"src="{{section.settings.suscribe_bg2| img_url: 'master' }}" alt="" />
+      <div class="capa"></div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="suscribe1" >
+        <div class="imagen">
+          <img class="suscribe-world" src="{{section.settings.suscribe_bg1| img_url: 'master' }}" alt="" />
+        </div>
+
+        <div class="section-title-white"  >
+          <p class="title-primary" >{{section.settings.suscribe_title}}</p>
+          <p class="title-secondary" >{{section.settings.suscribe_sub_title}}</p>
+        </div>
+      </div>
+
+      <div class="suscribe2">
+        <div class="imagen-2">
+           <img src="{{section.settings.suscribe_bg2| img_url: 'master' }}" alt="" />
+           <div class="capa"></div> 
+        </div>
+
+        <div class="form" >
+          <input type="text" placeholder="EMAIL"  />
+          <div class="button-green-container" >
+            <button class="button button-green">{{section.settings.suscribe_txt_btn}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+
+  
+
+
+          
+
+{% schema %}
+  {
+   "name": "Home Page",
+  "settings": [
+  
+    {
+    "type": "image_picker",
+    "id": "image-bs",
+    "label": "Best Seller Image Background"
+},
+{
+    "type": "text",
+    "id": "title",
+    "label": "Best Seller Title"
+},
+
+{
+    "type": "text",
+    "id": "sub_title",
+    "label": "Best Seller Sub-Title"
+},
+{
+    "type": "url",
+    "id": "bs_link_btn",
+    "label": "Best Seller Link Button"
+},
+{
+    "type": "text",
+    "id": "best_seller_txt_btn",
+    "label": "Best Seller Text Button"
+}
+  , 
+    {
+    "type": "image_picker",
+    "id": "about_bg_img",
+    "label": "About Image Background"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_center",
+    "label": "About Image Center"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_top_left",
+    "label": "Abount Image Top Left"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_botom_left",
+    "label": "About Image Botom Left"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_botom_right",
+    "label": "About Image Botom Right"
+},
+{
+    "type": "text",
+    "id": "about_title",
+    "label": "About Title"
+},
+{
+    "type": "text",
+    "id": "about_sub_title",
+    "label": "About Sub-Title"
+},
+{
+    "type": "textarea",
+    "id": "about_desc",
+    "label": "About Description"
+},
+{
+    "type": "url",
+    "id": "about_link_btn",
+    "label": "About Link Button"
+},
+{
+    "type": "text",
+    "id": "about_text_btn",
+    "label": "About Text Button"
+},
+    {
+    "type": "image_picker",
+    "id": "package_bg",
+    "label": "Package Background"
+},
+{
+    "type": "text",
+    "id": "package_title",
+    "label": "Package Title"
+},
+
+{
+    "type": "text",
+    "id": "package_sub_title",
+    "label": "Package Sub Title"
+},
+{
+    "type": "url",
+    "id": "pk_link_btn",
+    "label": "Package Link Button"
+},
+
+{
+    "type": "text",
+    "id": "pk_txt_btn",
+    "label": "Package Text Button"
+},
+    {
+    "type": "image_picker",
+    "id": "testimonials_bg",
+    "label": "Testimonials Background"
+},
+{
+    "type": "text",
+    "id": "testimonials_title",
+    "label": "Testimonials Title"
+},
+{
+    "type": "text",
+    "id": "testimonials_sub_title",
+    "label": "Testimonials Sub Title"
+},
+{
+    "type": "url",
+    "id": "testimonials_link_button",
+    "label": "Testimonials URL Button"
+},
+
+{
+    "type": "text",
+    "id": "testimonials_txt_btn",
+    "label": "Testimonials Text Button"
+},
+{
+    "type": "image_picker",
+    "id": "suscribe_bg1",
+    "label": "Suscribe Background 1"
+},
+{
+    "type": "image_picker",
+    "id": "suscribe_bg2",
+    "label": "Suscribe Background 2"
+},
+{
+    "type": "text",
+    "id": "suscribe_title",
+    "label": "Suscribe Title"
+},
+{
+    "type": "text",
+    "id": "suscribe_sub_title",
+    "label": "Suscribe Sub Title"
+},
+{
+    "type": "text",
+    "id": "suscribe_txt_btn",
+    "label": "Suscribe Text Button"
+}
+
+
+  ],
+   "blocks": [
+  {
+   "type": "bs_item",
+  "name": "Best Seller Item Card",
+ "settings": [
+   {
+    "type": "image_picker",
+    "id": "card_image",
+    "label": "Card Image"
+   },
+  {
+    "type": "text",
+    "id": "card-price",
+    "label": "Card Price"
+  },
+ {
+    "type": "text",
+    "id": "card-location",
+    "label": "Card Location"
+ },
+{
+    "type": "url",
+    "id": "add-cart",
+    "label": "Add Cart Link"
+ },
+    {
+    "type": "url",
+    "id": "product_url",
+    "label": "Product URL"
+}
+   
+ ]
+  },
+
+  {
+   "type": "pk_cards",
+  "name": "Package Cards",
+ "settings": [
+   {
+    "type": "text",
+    "id": "id",
+    "label": "Section ID"
+   },
+   {
+    "type": "text",
+    "id": "location",
+    "label": "Location"
+   },
+ {
+    "type": "url",
+    "id": "card_link",
+    "label": "Card Link"
+ },
+{
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+},
+{
+    "type": "text",
+    "id": "text",
+    "label": "Text"
+}
+     
+  ]
+  },
+      {
+   "type": "reviews",
+   "name": "Review",
+  "settings": [
+   {
+    "type": "select",
+    "id": "review_type",
+    "label": "Review Type",
+    "options": [
+        {
+            "value": "texto",
+            "label": "Text"
+        },
+        {
+            "value": "video",
+            "label": "Video"
+        }
+    ]
+   },
+  {
+    "type": "image_picker",
+    "id": "testimonials_img",
+    "label": "Testimonials Image"
+  },
+ {
+    "type": "text",
+    "id": "testimonials_review",
+    "label": "Testimnonials Review"
+ },
+ {
+    "type": "text",
+    "id": "testimonials_name",
+    "label": "Testimnonials Name"
+ },
+{
+    "type": "url",
+    "id": "testimonials_link",
+    "label": "Testimonials Link"
+}
+  ]
+  }
+   ] 
+  }   
+{% endschema %}

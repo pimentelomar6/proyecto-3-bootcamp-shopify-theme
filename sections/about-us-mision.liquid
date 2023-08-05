@@ -1,0 +1,82 @@
+ <!--Mision-->
+<section class="mision">
+  <img src="{{ section.settings.section2_bg | img_url: 'master' }}" alt="" srcset="" />
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.mision_title }}</h6>
+          <p class="">
+            {{ section.settings.mision_desc }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.vision_title }}</h6>
+          <p class="">
+            {{ section.settings.vision_desc }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4" data-aos="fade-up">
+        <div class="contain">
+          <h6 class="text-center mb-4">{{ section.settings.values_title }}</h6>
+          <p class="">
+            {{ section.settings.values_desc }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mision Section",
+    "settings": [
+       {
+      "type": "image_picker",
+      "id": "section2_bg",
+      "label": "Background Image Section 2"
+    },
+    {
+      "type": "text",
+      "id": "mision_title",
+      "label": "Mission Title"
+    },
+    {
+      "type": "textarea",
+      "id": "mision_desc",
+      "label": "Mission Description"
+    },
+    {
+      "type": "text",
+      "id": "vision_title",
+      "label": "Vision Title"
+    },
+    {
+      "type": "textarea",
+      "id": "vision_desc",
+      "label": "Vision Description"
+    },
+    {
+      "type": "text",
+      "id": "values_title",
+      "label": "Values Title"
+    },
+    {
+      "type": "textarea",
+      "id": "values_desc",
+      "label": "Values Description"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

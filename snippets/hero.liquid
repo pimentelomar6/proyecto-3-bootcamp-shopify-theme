@@ -1,0 +1,37 @@
+<section class="section-title">
+  <img src="{{ section.settings.imagen_background | img_url: 'master' }}" alt="">
+
+  {% assign opcion = section.settings.background_type %}
+
+  {% if opcion == 'imagen' %}
+    {% assign imagen = section.settings.imagen_background %}
+    {% if imagen %}
+      <img src="{{ imagen | img_url: 'master' }}" alt="{{ imagen.alt }}">
+    {% endif %}
+  {% endif %}
+
+  {% if opcion == 'video' %}
+    {% assign video = section.settings.video %}
+    {% if video %}
+      <video class="bg-video" muted autoplay loop>
+        <source src="{{ video | video_tag }}" type="video/mp4">
+      </video>
+    {% endif %}
+  {% endif %}
+
+  <div class="content">
+    <p class="t-section">{{ section.settings.hero_title }}</p>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        {% assign home_breadcrumb = section.settings.home_breadcrumb %}
+        <li class="breadcrumb-item">
+          {% if home_breadcrumb %}
+            <a href="{{ home_breadcrumb }}">Home</a>
+          {% endif %}
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{ section.settings.hero_title }}</li>
+      </ol>
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,120 @@
+
+<!--About Us-->
+<section class="about-us" id="about-us">
+
+      <img class="bg-aboutus" src="{{ section.settings.about_bg_img | img_url: 'master' }}" alt="" />
+  
+    <div class="about-text">
+      <p>adventure</p>
+    </div>
+    <div class="container">
+  
+      <div class="about-content container">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="about-images-container" data-aos="fade-right">
+             
+                <img src="" alt="" />
+  
+                <img class="image-1" src="{{ section.settings.about_img_center| img_url: 'master' }}" alt="" />
+          
+             
+                <img class="image-2" src="{{ section.settings.about_img_top_left | img_url: 'master' }}" alt="" />
+              
+                <img class="image-3" src="{{ section.settings.about_img_botom_left | img_url: 'master' }}" alt="" />
+              
+                <img class="image-4" src="{{ section.settings.about_img_botom_right | img_url: 'master' }}" alt="" />
+             
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 col-xl-6" data-aos="fade-left">
+            <div class="about-description">
+              <div class="description-contenedor">
+                <div class="section-title-white">
+                  <p class="title-primary">{{section.settings.about_title}}</p>
+                  <p class="title-secondary">{{section.settings.about_sub_title}} </p>
+                </div>
+                <p>
+                  {{section.settings.about_desc}}
+                </p>
+  
+                <div class="description-button">
+                  <div class="button-green-container">
+                   
+                      <a href="{{section.settings.about_link_btn}}"><button class="button button-green">{{section.settings.about_text_btn}}</button></a>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="rectangulo3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% schema %}
+  {
+    "name": "About Us",
+    "settings": [
+      {
+    "type": "image_picker",
+    "id": "about_bg_img",
+    "label": "About Image Background"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_center",
+    "label": "About Image Center"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_top_left",
+    "label": "Abount Image Top Left"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_botom_left",
+    "label": "About Image Botom Left"
+},
+{
+    "type": "image_picker",
+    "id": "about_img_botom_right",
+    "label": "About Image Botom Right"
+},
+{
+    "type": "text",
+    "id": "about_title",
+    "label": "About Title"
+},
+{
+    "type": "text",
+    "id": "about_sub_title",
+    "label": "About Sub-Title"
+},
+{
+    "type": "textarea",
+    "id": "about_desc",
+    "label": "About Description"
+},
+{
+    "type": "url",
+    "id": "about_link_btn",
+    "label": "About Link Button"
+},
+{
+    "type": "text",
+    "id": "about_text_btn",
+    "label": "About Text Button"
+}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

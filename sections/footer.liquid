@@ -1,0 +1,190 @@
+ <!-- Footer -->
+    <footer class="text-center text-lg-start text-white" id="footer">
+      <div class="image-footer">
+        <img src="{{section.settings.footer-logo | img_url: 'master' }}" alt="" />
+      </div>
+
+      <div class="container p-4 pb-0" data-aos="fade-up">
+        <section class="">
+          <div class="row" id="footer-section1">
+            <div class="col-md-5 col-lg-4 col-xl-4 mx-auto mt-3">
+              <img class="logo-footer" src="{{section.settings.footer-bg | img_url: 'master' }}" alt="" />
+              <div class="social-icons">
+                <a
+                  href="{{ section.settings.social_link1 }}"
+                  target="_blank"
+                  class="btn  btn-floating m-1"
+                  class="text-white"
+                  role="button"
+                  ><i class="fa-brands fa-facebook"></i
+                ></a>
+
+                <a
+                  href="{{ section.settings.social_link2 }}"
+                  target="_blank"
+                  class="btn  btn-floating m-1"
+                  class="text-white"
+                  role="button"
+                  ><i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a
+                  href="{{ section.settings.social_link3 }}"
+                  target="_blank"
+                  class="btn  btn-floating m-1"
+                  class="text-white"
+                  role="button"
+                  ><i class="fa-brands fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 footer-col">
+              <h6 class="footer-title  mb-4 font-weight-bold">
+                Quick Links
+              </h6>
+                {% for link in section.settings.footer.links %}
+                   <p class=" link">
+                <a class="" href="{{ link.url }}">
+                  <i class="fa-solid fa-square m-2"></i>{{ link.title }}</a
+                >
+              </p>
+                 {% endfor %}
+          
+            </div>
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 footer-col">
+              <h6 class="footer-title  mb-4 font-weight-bold">
+                More Information
+              </h6>
+              <p class=" link">
+                <a
+                  class=""
+                  href="{{ section.settings.location_url }}"
+                  target="_blank"
+                  ><i class="fa-solid fa-location-dot m-2"></i> {{ section.settings.location_text }} ​</a
+                >
+              </p>
+              <p class=" link">
+                <a href="mailto:{{ section.settings.mail }}" class=""
+                  ><i class="fa-solid fa-envelope m-2"></i>
+                  {{ section.settings.mail_text }}
+                </a>
+              </p>
+              <p class=" link">
+                <a class="" href=" tel:{{ section.settings.phone }}">
+                  <i class="fa-solid fa-phone m-2"></i>
+
+                  {{ section.settings.phone_text }}</a
+                >
+              </p>
+            </div>
+
+            <hr class="w-100 clearfix d-md-none" />
+          </div>
+        </section>
+      </div>
+
+      <div class="contenedor p-0 m-0 copyright">
+        <section class="copyright p-3 pt-0">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-lg-8 text-center text-md-start">
+              <div class="p-3">
+                Copyright © 2022 All rights reserved | This Website Was Designed
+                And Developed by
+              </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+              <a href="https://striveenterprise.com/" target="_blank">
+                <img class="w-25" src="{{ 'logo Silvera Enterprises.png' | asset_url }} " alt="" />
+              </a>
+              
+            </div>
+          </div>
+        </section>
+      </div>
+    </footer>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "footer-logo",
+        "label": "Image"
+       },
+       {
+        "type": "image_picker",
+        "id": "footer-bg",
+        "label": "Image Background"
+       },
+       {
+    "type": "url",
+    "id": "social_link1",
+    "label": "Social Media Link 1"
+},
+       {
+    "type": "url",
+    "id": "social_link2",
+    "label": "Social Media Link 2"
+},
+       {
+    "type": "url",
+    "id": "social_link3",
+    "label": "Social Media Link 3"
+},
+      {
+    "type": "text",
+    "id": "mail",
+    "label": "Mail"
+},
+      {
+    "type": "text",
+    "id": "mail_text",
+    "label": "Mail Text"
+},
+      {
+    "type": "text",
+    "id": "phone",
+    "label": "Phone"
+},
+      {
+    "type": "text",
+    "id": "phone_text",
+    "label": "Phone Text"
+},
+      {
+    "type": "url",
+    "id": "location_url",
+    "label": "Location URL"
+},
+      {
+    "type": "text",
+    "id": "location_text",
+    "label": "Location Text"
+},
+      {
+      "type": "link_list",
+      "id": "footer",
+      "default": "footer",
+      "label": "Menus"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,50 @@
+{% include 'hero' %}
+
+{% schema %}
+  {
+    "name": "Hero Section",
+    "settings": [
+       {
+      "type": "image_picker",
+      "id": "imagen_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        {
+          "value": "imagen",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title"
+    },
+    {
+      "type": "url",
+      "id": "home_breadcrumb",
+      "label": "URL"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

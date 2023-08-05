@@ -1,0 +1,96 @@
+ {% include 'reviews' %}
+
+{% schema %}
+  {
+    "name": "Reviews",
+    "settings": [
+          {
+    "type": "image_picker",
+    "id": "testimonials_bg",
+    "label": "Testimonials Background"
+},
+{
+    "type": "text",
+    "id": "testimonials_title",
+    "label": "Testimonials Title"
+},
+{
+    "type": "text",
+    "id": "testimonials_sub_title",
+    "label": "Testimonials Sub Title"
+},
+{
+    "type": "url",
+    "id": "testimonials_link_button",
+    "label": "Testimonials URL Button"
+},
+
+{
+    "type": "text",
+    "id": "testimonials_txt_btn",
+    "label": "Testimonials Text Button"
+}
+    ],
+    "blocks": [
+       {
+   "type": "review_texto",
+   "name": "Review Texto",
+  "settings": [
+   
+  {
+    "type": "image_picker",
+    "id": "testimonials_img",
+    "label": "Testimonials Image"
+  },
+ {
+    "type": "text",
+    "id": "testimonials_review",
+    "label": "Testimnonials Review"
+ },
+ {
+    "type": "text",
+    "id": "testimonials_name",
+    "label": "Testimnonials Name"
+ }
+  ]
+  },
+       {
+   "type": "review_video",
+   "name": "Review Video",
+  "settings": [
+  
+  {
+    "type": "image_picker",
+    "id": "testimonials_img",
+    "label": "Testimonials Image"
+  },
+ {
+    "type": "text",
+    "id": "testimonials_review",
+    "label": "Testimnonials Review"
+ },
+ {
+    "type": "text",
+    "id": "testimonials_name",
+    "label": "Testimnonials Name"
+ },
+{
+  "type": "video_url",
+  "id": "testimonials_link",
+  "label": "Testimonials Link",
+  "accept": [
+    "youtube",
+    "vimeo"
+  ]
+}
+  ]
+  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

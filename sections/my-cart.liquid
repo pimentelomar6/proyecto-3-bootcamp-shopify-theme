@@ -1,0 +1,49 @@
+<div data-ajax-cart-section  class="popup-cart-ajax " >
+
+    {% for item in cart.items %} 
+       {% if forloop.first %}
+     
+    <div class="mb-2  text-center"> 
+       <span class=" text-center title-secondary">Was added to cart: </span>
+       <p class=" title-primary ">{{ item.title }}</p>
+    </div>
+    <div class="mb-2 container-image">
+      <img src="{{ item.image  | img_url: width: 300 }}" alt="product in cart" />
+    </div>
+    {% endif %}
+  {% endfor %}
+  <div class="link" >
+     <a href="/cart" class="mt-4 btn-section btn-small btn-popup ">View My Cart (<span data-ajax-cart-bind-state="cart.item_count"></span>)</a>
+  </div>
+   
+      <form style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        " action="/cart" method="post" class="my-cart">
+       <button  class="button btn-section btn-popup checkout mt-4" type="submit" name="checkout">
+          Checkout —&nbsp;<span data-ajax-cart-bind-state="cart.total_price | money_with_currency"> $24.00 USD</span>
+        </button> 
+      </form>
+
+    <button class="close-popup-cart" data-ajax-cart-toggle-class-button="show-popup-cart | remove">
+      <i class="fa fa-times"></i>
+    </button>
+
+
+  
+</div>
+
+
+{% schema %}
+  {
+    "name": "My cart",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

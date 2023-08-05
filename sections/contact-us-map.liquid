@@ -1,0 +1,41 @@
+ <section class="map">
+    <img src="{{ section.settings.section_bg_img | img_url: 'master' }}" alt="" />
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+   
+        <iframe
+          class="col-12"
+          height="450"
+          src="{{section.settings.map_url}}"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+{% schema %}
+  {
+    "name": "Section Map",
+    "settings": [
+      {
+    "type": "image_picker",
+    "id": "section_bg_img",
+    "label": "Background Section Map"
+},
+{
+    "type": "url",
+    "id": "map_url",
+    "label": "Map URL"
+}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

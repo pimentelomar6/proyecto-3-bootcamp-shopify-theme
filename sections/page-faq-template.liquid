@@ -1,0 +1,269 @@
+   <!--Hero-->
+     {% include 'hero' %}
+
+    <section class="frecuency-questions">
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12" data-aos="fade-up">
+        <div class="section-title-white">
+          <h3 class="title-primary">{{ section.settings.section1_tittle }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="acordion-image">
+      <div class="col-12 col-md-6 col-lg-6" data-aos="fade-up">
+        <div class="questions">
+          <div class="accordion" id="accordionExample">
+            {% assign count = 0 %} {% if section.blocks %} {% for item in
+            section.blocks %} {% if count == 0 %}
+
+            <div class="card">
+              <div class="card-header active" id="heading{{ count }}">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block btn-acordion"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse{{ count }}"
+                    aria-expanded="true"
+                    aria-controls="collapse{{ count }}"
+                  >
+                    {{ item.settings.question }}
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="collapse{{ count }}"
+                class="collapse show"
+                aria-labelledby="heading{{ count }}"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body">
+                  {{ item.settings.answer }}
+                </div>
+              </div>
+            </div>
+            {% endif %} {% if count != 0 %}
+
+            <div class="card">
+              <div class="card-header" id="heading{{ count }}">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link btn-block btn-acordion"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse{{ count }}"
+                    aria-expanded="true"
+                    aria-controls="collapse{{ count }}"
+                  >
+                    {{ item.settings.question }}
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="collapse{{ count }}"
+                class="collapse"
+                aria-labelledby="heading{{ count }}"
+                data-parent="#accordionExample"
+              >
+                <div class="card-body">
+                  {{ item.settings.answer }}
+                </div>
+              </div>
+            </div>
+            {% endif %} {% assign count = count | plus: 1 %} {% endfor %} {%
+            else %} {% comment %} no rows found {% endcomment %} {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center" id="fqs-button-none">
+        <a href="{{ section.settings.fqs_btn_link }}"
+          ><button class="button button-hero mt-4" data-aos="fade-up">
+            {{ section.settings.section1_btn_txt }}
+          </button></a
+        >
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-6" data-aos="fade-up">
+        <div class="imagen">
+          <img
+            class="img-fluid"
+            src="{{ section.settings.section1_img | img_url: 'master' }}"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="row-button-fqs">
+      <div class="col-12 text-center">
+        {% assign url_fqs = section.url | append: fqs_btn_link %}
+
+        <a href="{{ url_fqs }}"
+          ><button class="button button-hero mt-4" data-aos="fade-up">
+            {{ section.settings.section1_btn_txt }}
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ {% include 'reviews' %}
+
+{% schema %}
+{
+   "name": "FAQ's Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "imagen_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        {
+          "value": "imagen",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title"
+    },
+    {
+      "type": "url",
+      "id": "home_breadcrumb",
+      "label": "URL"
+    },
+   {
+    "type": "text",
+    "id": "section1_tittle",
+    "label": "Section 1 Title"
+    
+   },
+   {
+    "type": "text",
+    "id": "section1_btn_txt",
+    "label": "Section 1 Button Text"
+    
+  },
+  {
+    "type": "image_picker",
+    "id": "section1_img",
+    "label": "Image Section 1"
+   },
+  {
+    "type": "url",
+    "id": "fqs_btn_link",
+    "label": "Link Button"
+  },
+     {
+    "type": "image_picker",
+    "id": "testimonials_bg",
+    "label": "Testimonials Background"
+},
+{
+    "type": "text",
+    "id": "testimonials_title",
+    "label": "Testimonials Title"
+},
+{
+    "type": "text",
+    "id": "testimonials_sub_title",
+    "label": "Testimonials Sub Title"
+},
+{
+    "type": "url",
+    "id": "testimonials_link_button",
+    "label": "Testimonials URL Button"
+},
+
+{
+    "type": "text",
+    "id": "testimonials_txt_btn",
+    "label": "Testimonials Text Button"
+}
+  ],
+  
+  "blocks": [
+    {
+     "type": "acordion_item",
+     "name": "Acordion Item",
+      "settings": [
+       {
+        "type": "textarea",
+        "id": "question",
+        "label": "Question"
+       },
+
+      {
+        "type": "textarea",
+        "id": "answer",
+        "label": "Answer"
+      }
+      ]
+    },
+     {
+   "type": "reviews",
+   "name": "Review",
+  "settings": [
+   {
+    "type": "select",
+    "id": "review_type",
+    "label": "Review Type",
+    "options": [
+        {
+            "value": "texto",
+            "label": "Text"
+        },
+        {
+            "value": "video",
+            "label": "Video"
+        }
+    ]
+   },
+  {
+    "type": "image_picker",
+    "id": "testimonials_img",
+    "label": "Testimonials Image"
+  },
+ {
+    "type": "text",
+    "id": "testimonials_review",
+    "label": "Testimnonials Review"
+ },
+ {
+    "type": "text",
+    "id": "testimonials_name",
+    "label": "Testimnonials Name"
+ },
+{
+    "type": "url",
+    "id": "testimonials_link",
+    "label": "Testimonials Link"
+}
+  ]
+  }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,145 @@
+<!--Hero-->
+<section class="hero" id="hero">
+
+    {% assign opcion = section.settings.background_type %}
+
+    {% if opcion == 'imagen' %}
+  
+    {% assign imagen = section.settings.imagen_background %}
+    {% if imagen %}
+        <img class="hero-img-bg" src="{{ imagen | img_url: 'master' }}" alt="" />
+    {% endif %}
+    {% endif %}
+      
+    <div class="container">
+  
+        {% if opcion == 'video' %}
+          {% assign video = section.settings.video %}
+         {% if video %}
+          <video muted autoplay loop>
+            <source src="{{ video | video_tag }}" type="video/mp4" />
+          </video>
+          {% endif %}
+        {% endif %}
+  
+      <div class="capa"></div>
+  
+      <div class="rectangulo1">
+        <div class="icons">
+          <a role="button" href="{{section.settings.social_media_link_1}}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+  
+          <a role="button" href="{{section.settings.social_media_link_2}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+  
+          <a role="button" href="{{section.settings.social_media_link_3}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="follow">
+          <p>{{section.settings.social_link_text}}</p>
+        </div>
+      </div>
+  
+      <div class="contenedor-hero-rectangulo-2">
+        <div class="rectangulo2">
+  
+          <div class="text">
+            <p class="transparent-text">
+             {{section.settings.text_primary}}
+  
+            </p>
+            <p class="white-text">{{section.settings.text_secondary}}</p>
+  
+           
+              <a href="{{section.settings.link_button}}"><button class="button button-hero">{{ section.settings.text_button }} </button></a>
+      
+          </div>
+          <div class="rectangulo3"></div>
+        </div>
+      </div>
+  
+      <div class="icons" id="icons-responsive">
+        <a role="button" href="{{section.settings.social_media_link_1}}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+  
+        <a role="button" href="{{section.settings.social_media_link_2}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+  
+        <a role="button" href="{{section.settings.social_media_link_3}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </section>
+{% schema %}
+  {
+    "name": "Hero Home",
+    "settings": [
+   {
+    "type": "select",
+    "id": "background_type",
+    "label": "Background Type",
+    "options": [
+        {
+            "value": "imagen",
+            "label": "Image"
+           
+        },
+        {
+            "value":"video",
+            "label":"Video"
+        }
+    ]
+   },
+  {
+    "type": "image_picker",
+    "id": "imagen_background",
+    "label": "Background Image"
+  },
+ {
+    "type": "video",
+    "id": "video",
+    "label": "Video Background"
+ },
+{
+    "type": "url",
+    "id": "social_media_link_1",
+    "label": "Social Link 1"
+},
+{
+    "type": "url",
+    "id": "social_media_link_2",
+    "label": "Social Link 2"
+},
+{
+    "type": "url",
+    "id": "social_media_link_3",
+    "label": "Social Link 3"
+},
+{
+    "type": "text",
+    "id": "social_link_text",
+    "label": "Social Link Text"
+},
+{
+    "type": "text",
+    "id": "text_primary",
+    "label": "Text Primary"
+},
+{
+    "type": "text",
+    "id": "text_secondary",
+    "label": "Text Secondary"
+},
+    {
+    "type": "text",
+    "id": "text_button",
+    "label": "Text Button"
+},
+{
+    "type": "url",
+    "id": "link_button",
+    "label": "Link Button"
+}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
